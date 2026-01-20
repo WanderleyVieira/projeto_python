@@ -26,6 +26,7 @@ def menu():
     print(f'[1] Realizar Cálculo do IMC')
     print(f'[2] Visualizar Tabela do IMC')
     print(f'[3] Lista de IMC cadastrados: ')
+    print(f'[4] Sair do programa')
 
 #Onde será calculado o IMC de acordo com informações solicitada pelo sistema/
 #como peso e altura;
@@ -33,7 +34,7 @@ def menu():
 
 def calculo_imc():
 
-    id += 1
+    id= len(cadastro_imc) + 1
 
     try:
         nome= input('Digite seu nome: ')
@@ -43,7 +44,7 @@ def calculo_imc():
 
     except ValueError:
         print('Erro de digitação, lembre-se \n' \
-              'idade,peso e altura são números inteiros')
+              'idade,peso e altura são números')
         return
 
     resultado_imc= peso / (altura * altura) 
@@ -102,7 +103,18 @@ while True:
         tabela_imc()
 
     elif opcao == 3:
-        print(cadastro_imc)
+        if len(cadastro_imc) == 0:
+            print('Sem cadastros\n')
+        else:
+            print(cadastro_imc)
+
+    elif opcao == 4:
+        print('Encerrando programa...\n')
+        break
+
+    else:
+        print('Opção invalida, tente novamente\n')
+        continue
 
 
 
