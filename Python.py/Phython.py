@@ -18,42 +18,33 @@ tabela= {
 
 #Saudação para o usuário;
 
-def Saudacao(a):
-    print(a)
-
-introducao= 'Seja Bem-Vindo!'
-
 #Menu de opções;
 def menu():
+
+    print('        Seja Bem-Vindo!         \n')
     
     print(f'[1] Realizar Cálculo do IMC')
     print(f'[2] Visualizar Tabela do IMC')
     print(f'[3] Lista de IMC cadastrados: ')
 
-#Informações sobre o que é IMC:
-
-'''def imc_info():
-    print('O IMC (Índice de Massa Corporal) é um cálculo matemático usado para indicar se uma pessoa está com peso adequado,\n magreza, sobrepeso ou obesidade. É um índice universal, validado pela Organização Mundial da Saúde (OMS), mas não \n avalia sozinho o estado nutricional, devendo ser interpretado por um profissional de saúde junto com outros fatores,\n como idade, sexo e percentual de gordura.\n'
-    'A fórmula foi criada por Adolphe Quételet no século XVIII, revisada por Ancel Keys em 1972 e reconhecida como padrão\n internacional pela OMS em 1980.')'''
-
-
 #Onde será calculado o IMC de acordo com informações solicitada pelo sistema/
 #como peso e altura;
 
-import random
 
 def calculo_imc():
+
+    id += 1
 
     try:
         nome= input('Digite seu nome: ')
         idade= int(input('Qual sua idade ? '))
         peso= float(input('Qual seu seu peso em kg?  '))
         altura= float(input('Qual sua altura? '))
-        id = 22
 
     except ValueError:
         print('Erro de digitação, lembre-se \n' \
               'idade,peso e altura são números inteiros')
+        return
 
     resultado_imc= peso / (altura * altura) 
     print(f'Seu IMC= {resultado_imc:.2f}')
@@ -63,11 +54,7 @@ def calculo_imc():
         'imc': resultado_imc,
         'id': id
     }
-
-    if id in cadastro_imc('id') :
-        print('id duplicado tente novamente')
-        return
-
+    
     cadastro_imc.append(dic_imc)
 
     #Será válidado o resultado com a tabela de acordo com as opções abaixo;
@@ -104,8 +91,6 @@ def tabela_imc():
 
 while True:
 
-    Saudacao(introducao)
-
     menu()
 
     opcao= int(input('Escolha uma das opções acima: '))
@@ -121,4 +106,10 @@ while True:
 
 
 
+
+#Informações sobre o que é IMC:
+
+'''def imc_info():
+    print('O IMC (Índice de Massa Corporal) é um cálculo matemático usado para indicar se uma pessoa está com peso adequado,\n magreza, sobrepeso ou obesidade. É um índice universal, validado pela Organização Mundial da Saúde (OMS), mas não \n avalia sozinho o estado nutricional, devendo ser interpretado por um profissional de saúde junto com outros fatores,\n como idade, sexo e percentual de gordura.\n'
+    'A fórmula foi criada por Adolphe Quételet no século XVIII, revisada por Ancel Keys em 1972 e reconhecida como padrão\n internacional pela OMS em 1980.')'''
 
