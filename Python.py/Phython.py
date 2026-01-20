@@ -4,6 +4,8 @@
 
 #Tabela: informações do IMC;
 
+cadastro_imc= []
+
 tabela= {
     'Abaixo de 17' : 'Muito baixo do peso ideal',
     'Entre 17 e 18,49' : 'Abaixo do peso',
@@ -23,19 +25,22 @@ introducao= 'Seja Bem-Vindo!'
 
 #Menu de opções;
 def menu():
-    print(f'[1] O que é IMC? ')
-    print(f'[2] Realizar Cálculo do IMC')
-    print(f'[3] Visualizar Tabela do IMC')
+    
+    print(f'[1] Realizar Cálculo do IMC')
+    print(f'[2] Visualizar Tabela do IMC')
+    print(f'[3] Lista de IMC cadastrados: ')
 
 #Informações sobre o que é IMC:
 
-def imc_info():
+'''def imc_info():
     print('O IMC (Índice de Massa Corporal) é um cálculo matemático usado para indicar se uma pessoa está com peso adequado,\n magreza, sobrepeso ou obesidade. É um índice universal, validado pela Organização Mundial da Saúde (OMS), mas não \n avalia sozinho o estado nutricional, devendo ser interpretado por um profissional de saúde junto com outros fatores,\n como idade, sexo e percentual de gordura.\n'
-    'A fórmula foi criada por Adolphe Quételet no século XVIII, revisada por Ancel Keys em 1972 e reconhecida como padrão\n internacional pela OMS em 1980.')
+    'A fórmula foi criada por Adolphe Quételet no século XVIII, revisada por Ancel Keys em 1972 e reconhecida como padrão\n internacional pela OMS em 1980.')'''
 
 
 #Onde será calculado o IMC de acordo com informações solicitada pelo sistema/
 #como peso e altura;
+
+import random
 
 def calculo_imc():
 
@@ -44,13 +49,26 @@ def calculo_imc():
         idade= int(input('Qual sua idade ? '))
         peso= float(input('Qual seu seu peso em kg?  '))
         altura= float(input('Qual sua altura? '))
+        id = 22
 
     except ValueError:
         print('Erro de digitação, lembre-se \n' \
               'idade,peso e altura são números inteiros')
 
-        resultado_imc= peso / (altura * altura) 
-        print(f'Seu IMC= {resultado_imc:.2f}')
+    resultado_imc= peso / (altura * altura) 
+    print(f'Seu IMC= {resultado_imc:.2f}')
+
+    dic_imc= {
+        'nome' : nome,
+        'imc': resultado_imc,
+        'id': id
+    }
+
+    if id in cadastro_imc('id') :
+        print('id duplicado tente novamente')
+        return
+
+    cadastro_imc.append(dic_imc)
 
     #Será válidado o resultado com a tabela de acordo com as opções abaixo;
 
@@ -93,14 +111,13 @@ while True:
     opcao= int(input('Escolha uma das opções acima: '))
 
     if opcao == 1:
-        imc_info()
-
-    elif opcao == 2:
         calculo_imc()
 
-    elif opcao == 3:
+    elif opcao == 2:
         tabela_imc()
 
+    elif opcao == 3:
+        print(cadastro_imc)
 
 
 
