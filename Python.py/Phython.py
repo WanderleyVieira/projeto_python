@@ -113,7 +113,7 @@ while True:
         break
 
     else:
-        print('Opção invalida, tente novamente\n')
+        print('Opção inválida, tente novamente\n')
         continue
 
 
