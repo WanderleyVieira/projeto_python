@@ -19,44 +19,42 @@ tabela= {
 #Saudação para o usuário;
 
 #Menu de opções;
-def menu():
 
-    print('        Seja Bem-Vindo!         \n')
-    
-    print(f'[1] Realizar Cálculo do IMC')
-    print(f'[2] Visualizar Tabela do IMC')
-    print(f'[3] Lista de IMC cadastrados: ')
-    print(f'[4] Sair do programa')
 
 #Onde será calculado o IMC de acordo com informações solicitada pelo sistema/
 #como peso e altura;
 
 
 def calculo_imc():
+    while True:
+        id= len(cadastro_imc) + 1
 
-    id= len(cadastro_imc) + 1
+        try:
+            nome= input('Digite seu nome: ')
+            idade= int(input('Qual sua idade ? '))
+            peso= float(input('Qual seu seu peso em kg?  '))
+            altura= float(input('Qual sua altura? '))
 
-    try:
-        nome= input('Digite seu nome: ')
-        idade= int(input('Qual sua idade ? '))
-        peso= float(input('Qual seu seu peso em kg?  '))
-        altura= float(input('Qual sua altura? '))
+            if idade < 18:
+                print('O resultado do calculo do IMC foi feito para maiores de 18 anos.')
+                break
 
-    except ValueError:
-        print('Erro de digitação, lembre-se \n' \
-              'idade,peso e altura são números')
-        return
+        except ValueError:
+            print('Erro de digitação, lembre-se \n' \
+                'idade,peso e altura são números')
+            continue
 
-    resultado_imc= peso / (altura * altura) 
-    print(f'Seu IMC= {resultado_imc:.2f}')
+        resultado_imc= peso / (altura * altura) 
+        print(f'Seu IMC= {resultado_imc:.2f}')
 
-    dic_imc= {
-        'nome' : nome,
-        'imc': resultado_imc,
-        'id': id
-    }
-    
-    cadastro_imc.append(dic_imc)
+        dic_imc= {
+            'nome' : nome,
+            'imc': resultado_imc,
+            'id': id
+        }
+        
+        cadastro_imc.append(dic_imc)
+        break
 
     #Será válidado o resultado com a tabela de acordo com as opções abaixo;
 
@@ -92,29 +90,36 @@ def tabela_imc():
 
 while True:
 
-    menu()
+    print('        Seja Bem-Vindo!         \n')
+    
+    print(f'[1] Realizar Cálculo do IMC')
+    print(f'[2] Visualizar Tabela do IMC')
+    print(f'[3] Lista de IMC cadastrados: ')
+    print(f'[4] Sair do programa')
 
     opcao= int(input('Escolha uma das opções acima: '))
 
-    if opcao == 1:
-        calculo_imc()
+    while True:
 
-    elif opcao == 2:
-        tabela_imc()
+        if opcao == 1:
+            calculo_imc()
 
-    elif opcao == 3:
-        if len(cadastro_imc) == 0:
-            print('Sem cadastros\n')
+        elif opcao == 2:
+            tabela_imc()
+
+        elif opcao == 3:
+            if len(cadastro_imc) == 0:
+                print('Sem cadastros\n')
+            else:
+                print(cadastro_imc)
+
+        elif opcao == 4:
+            print('Encerrando programa...\n')
+            break
+
         else:
-            print(cadastro_imc)
-
-    elif opcao == 4:
-        print('Encerrando programa...\n')
-        break
-
-    else:
-        print('Opção inválida, tente novamente\n')
-        continue
+            print('Opção inválida, tente novamente\n')
+            continue
 
 
 
