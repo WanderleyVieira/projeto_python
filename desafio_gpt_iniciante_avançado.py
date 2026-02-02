@@ -17,9 +17,6 @@ def cadastrar():
             if x == False:
                 break
 
-                
-
-
         except ValueError:
             print('Valor errado, tente novamente \n')
             continue
@@ -51,7 +48,6 @@ def buscar():
     if y == False:
         print('Produto não identificado.')
     
-
 def atualizar_quantidade():
     atualizar=input('Digite o nome do produto que quer atualizar a quantidade: ')
     z= False
@@ -64,9 +60,6 @@ def atualizar_quantidade():
             z= True
     if z == False:
         print('Produto não identificado.')
-
-
-
 
 def remover():
     contador=0
@@ -81,9 +74,6 @@ def remover():
 
     if r['nome_produto'] not in nome_r:
         print('Produto não identificado.')
-
-        
-            
 
 while True:
     print('\n[1] Cadastrar produto')
