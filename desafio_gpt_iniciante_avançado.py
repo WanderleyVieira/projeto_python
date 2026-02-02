@@ -8,11 +8,16 @@ def cadastrar():
         try:
             nome_produto=input('Digite o nome do produto: ')
             quantidade= int(input('Digite a quantidade de produto: '))
+            x= True
             if len(produtos) >= 1:
                 for i in produtos:
                     if i ['nome_produto'] == nome_produto:
                         print('Erro: Produto já está na lista.')
-                        break
+                        x = False
+            if x == False:
+                break
+
+                
 
 
         except ValueError:
@@ -38,26 +43,28 @@ def listar():
 def buscar():
     nome=input('Digite o nome do produto que quer buscar: ')
 
-    x=False
+    y=False
     for i in produtos:
         if i['nome_produto'] in nome.lower():
             print(i)
-            x=True
-    if x == False:
+            y=True
+    if y == False:
         print('Produto não identificado.')
     
 
 def atualizar_quantidade():
     atualizar=input('Digite o nome do produto que quer atualizar a quantidade: ')
-
+    z= False
     for i in produtos:
         
         if i['nome_produto'] in atualizar.lower():
-            nova_quantidade= input('Digite a nova quantidade')
+            nova_quantidade= input('Digite a nova quantidade do produto: ')
             i['quantidade']= nova_quantidade
             print(i)
-    if i['nome_produto'] not in atualizar.lower():
+            z= True
+    if z == False:
         print('Produto não identificado.')
+
 
 
 
