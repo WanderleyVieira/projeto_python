@@ -3,6 +3,7 @@ produtos = []
 def cadastrar():
 
     while True:
+        #Preciso verificar como ficará o id, para que não haja uma duplicação. 
         id_produto = len(produtos) + 1
     
         try:
