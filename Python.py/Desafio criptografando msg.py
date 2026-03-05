@@ -2,9 +2,9 @@ import string #biblioteca onde armazena ascii entre outras strings
 import random #biblioteca onde consigo buscar por números aleatorios através de comandos.
 
 #ascii
-ascii1= (string.ascii_letters)
+ascii1= (string.ascii_letters+string.digits+string.punctuation+'')
 
-def pa():
+def pa(palavra, shift):
         a= random.randint(0,9) #Será sorteado um número de 0 a 9 que correspondera ao número inicial (a)
         r=5         #r= razão
         cripto= '' #onde armazenará as letras da criptografia
@@ -16,7 +16,7 @@ def pa():
 
         print(f'criptografia = {cripto}') #mensagem criptografada
 
-def pg():
+def pg(palavra, shift):
         a1= random.randint(0,9)
         r1=2
         cripto1= ''
@@ -28,7 +28,7 @@ def pg():
                         #e assim sucessivamente, até ser finalizado o for.
         print(f'criptografia = {cripto1}')
 
-def np():
+def np(palavra, shift):
     
     #Abaixo farei uma tupla com alguns números primos.
     numeros_primos= (2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139)
@@ -36,12 +36,12 @@ def np():
     cripto2= ''
 
     for i in palavra:
-        soma2= shift + numeros_primos[ni]
+        soma2= shift + numeros_primos[ni % len(numeros_primos)]
         cripto2 += ascii1[soma2 % len(ascii1)]
         ni+=1
     print(f'criptografia = {cripto2}')
 
-def fibonacci():
+def fibonacci(palavra, shift):
     na=0 #número anterior
     np=1 #número posterior
     cripto3= ''
@@ -83,16 +83,16 @@ while True:
          
 
     if opcao == '1':
-        pa()
+        pa(palavra, shift)
 
     elif opcao == '2':
-        pg()
+        pg(palavra, shift)
 
     elif opcao == '3':
-        np()
+        np(palavra, shift)
 
     elif opcao == '4':
-         fibonacci()
+         fibonacci(palavra, shift)
     
     else:
          print('opção inválida, tente novamente.')
