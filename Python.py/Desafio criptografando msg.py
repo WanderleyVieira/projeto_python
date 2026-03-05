@@ -60,7 +60,7 @@ def fibonacci(palavra, shift):
 while True:
 
 
-    print('[1] PA(Progressão Aritmetica)')
+    print('\n[1] PA(Progressão Aritmetica)')
     print('[2] PG(Progressão Geometrica)')
     print('[3] NP(Números Primos)')
     print('[4] Fibonacci')
