@@ -1,17 +1,17 @@
-import string #biblioteca onde armazena tabela ascii
+import string #biblioteca onde armazena ascii entre outras strings
 import random #biblioteca onde consigo buscar por números aleatorios através de comandos.
 
-#tabela ascii
+#ascii
 ascii1= (string.ascii_letters)
 
 def pa():
-        a= random.randint(0,9) #Será sorteado um número de 0 a 9 que correspondera ao número inicial chamado a
+        a= random.randint(0,9) #Será sorteado um número de 0 a 9 que correspondera ao número inicial (a)
         r=5         #r= razão
-        cripto= ''
+        cripto= '' #onde armazenará as letras da criptografia
 
         for i in palavra:
-            soma = shift + a                #[soma % len(ascii1)] *assim que a tabela acabar, voltará para o inicio novamente
-            cripto += ascii1[soma % len(ascii1)] #será adicionado no cripto algumas letras da tabela ascii que corresponde ao indice do resultado da soma
+            soma = shift + a                #[soma % len(ascii1)] *assim que a tabela acabar, voltará para o inicio novamente (fará lopping)
+            cripto += ascii1[soma % len(ascii1)] #será adicionado no cripto algumas letras da tabela ascii, que corresponde ao indice identificado pelo resultado da soma
             a += r #a soma da razão com o número inicial(a), resultará no próximo número que se tornará o número inicial(a), e assim sucessivamente, até ser finalizado o for
 
         print(cripto) #mensagem criptografada
@@ -24,7 +24,7 @@ def pg():
         for i in palavra:
             soma1= shift + a1
             cripto2 += ascii1[soma1 % len(ascii1)]
-            a1= a1*r1 #a multiplicação da razão com o número inicial(a1), resultará no próximo número que se tornará o número inicial(a1),\n
+            a1= a1*r1 #a multiplicação da razão(r1) com o número inicial(a1), resultará no próximo número que se tornará o número inicial(a1),\n
                         #e assim sucessivamente, até ser finalizado o for.
         print(cripto2)
 
@@ -60,29 +60,43 @@ def fibonacci():
 while True:
 
 
-    print('[1] PA')
-    print('[2} PG')
-    print('[3] NP')
+    print('[1] PA(Progressão Aritmetica)')
+    print('[2] PG(Progressão Geometrica)')
+    print('[3] NP(Números Primos)')
     print('[4] Fibonacci')
+    print('[5] Sair')
 
-    opcao= input('Escolha uma das opções acima: ')
+    try:
+        opcao= input('Escolha uma das opções acima: ')
 
-    palavra= input('Digite uma palavra com até 15 caracteres e sem acentuo ')
+        palavra= input('Digite uma palavra: ')
 
-    shift= int(input('Digite o valor de Shift: '))
+        shift= int(input('Digite o valor de Shift: '))
+    
+    except ValueError:
+         print('Error digite exatamente da maneira que está sendo solicitado.')
+         continue
+         
 
     if opcao == '1':
         pa()
 
-        
-    if opcao == '2':
+    elif opcao == '2':
         pg()
 
-    if opcao == '3':
+    elif opcao == '3':
         np()
 
-    if opcao == '4':
+    elif opcao == '4':
          fibonacci()
+
+    elif opcao == '5':
+         print('Fechando programa...')
+         break
+    
+    else:
+         print('opção inválida, tente novamente.')
+         continue
 
     
 
