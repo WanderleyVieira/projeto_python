@@ -1,8 +1,8 @@
-import string #biblioteca onde armazena ascii entre outras strings
-import random #biblioteca onde consigo buscar por números aleatorios através de comandos.
+import string # armazena ascii entre outras strings
+import random #consigo gerar números aleátorios
 
 #ascii
-ascii1= (string.ascii_letters+string.digits+string.punctuation+'')
+ascii1= (string.ascii_letters+string.digits+string.punctuation+' ')
 
 def pa(palavra, shift):
         a= random.randint(0,9) #Será sorteado um número de 0 a 9 que correspondera ao número inicial (a)
