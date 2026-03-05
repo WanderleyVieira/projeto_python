@@ -1,6 +1,8 @@
 import string # armazena ascii entre outras strings
 import random #consigo gerar números aleátorios
 
+#mensagens= []
+
 #ascii
 ascii1= (string.ascii_letters+string.digits+string.punctuation+' ')
 
@@ -8,11 +10,37 @@ def pa(palavra, shift):
         a= random.randint(0,9) #Será sorteado um número de 0 a 9 que correspondera ao número inicial (a)
         r=5         #r= razão
         cripto= '' #onde armazenará as letras da criptografia
+        
 
         for i in palavra:
             soma = shift + a                #[soma % len(ascii1)] *assim que a tabela acabar, voltará para o inicio novamente (fará lopping)
             cripto += ascii1[soma % len(ascii1)] #será adicionado no cripto algumas letras da tabela ascii, que corresponde ao indice identificado pelo resultado da soma
             a += r #a soma da razão com o número inicial(a), resultará no próximo número que se tornará o número inicial(a), e assim sucessivamente, até ser finalizado o for
+
+            mensagem_pa_crip= {
+                'palavra': palavra,
+                'criptografada': cripto,
+                'a': a,
+                'r': r,
+                'shift': shift
+            }
+        
+            #é preciso identificar qual o melhor código para implementar a descriptografia, acima está um passo por que é preciso salvar esses dados
+            #mensagem= ''
+            '''descripto= a+r+shift*2
+            negativo = r+shift-descripto
+            print(negativo)
+            mensagem  += ascii1[negativo % len(ascii1)]
+            
+            mensagens.append(mensagem_pa_crip)
+            print(mensagem)
+
+            print(mensagem_pa_crip)'''
+        #for i in cripto:
+
+        ###Ainda pretendo evoluir o projeto adicionando descriptografia e melhorias na estrutura do código.
+        
+        
 
         print(f'criptografia = {cripto}') #mensagem criptografada
 
