@@ -66,3 +66,5 @@ while True:
 
     else:
         print('Opção digitada é inválida, tente novamente.')
+
+        
